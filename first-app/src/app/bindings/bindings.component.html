@@ -1,0 +1,16 @@
+<h2>Bindings</h2>
+<p>Esempio di string interpolation</p>
+<h1>{{ numero }}</h1>
+<p>Esempio di Event binding: <button (click)="incrementa()">Incrementa</button></p>
+<img src="/bici.jpg">
+<p>Property binding</p>
+<img [src]="nomeImmagine">
+<p>Style binding</p>
+<h1 [style.color]="colori[indiceColore]">Questo testo è scritto in {{colori[indiceColore]}}</h1>
+<input type="number" [(ngModel)]="indiceColore" min="0" max="2">
+<p>Class binding</p>
+<h1 [class]="className">Questo testo è formattato con la classe: {{className}}</h1>
+<p>Two-way binding</p>
+<input type="text" [(ngModel)]="nome">
+<button (click)="cambiaNome()">Cambia nome</button>
+<p>Il nome inserito è: {{nome}}</p>
