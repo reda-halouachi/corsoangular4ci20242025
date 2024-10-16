@@ -9,18 +9,27 @@
 ## Primi passi
 - Installare sul proprio PC nodejs
 - Per contrallare se sono installati e la versione:
-  - node -v
-  - npm -v
+```bash
+node -v
+npm -v
+```
 
 ## Come installare Angular
-```npm install -g @angular/cli```  
+```bash
+npm install -g @angular/cli
+```  
 > NB: -g installa angular in global mode, ovvero come funzionalità nuova (o programma nuovo) del mio computer  
 
-Per controllare la corretta installazione di angular digitare: ```ng version```
+Per controllare la corretta installazione di angular digitare: 
+```bash ng version
+```
 
 ## Creare la prima app
-Per creare la prima app: ```ng new first-app```  
-> NB: > NB: i nomi composti vanno separati da trattino. Non usare camel case. Questo NON vale per i nomi delle variabili o degli oggetti all'interno del codice.
+Per creare la prima app: 
+```bash
+ng new first-app
+```  
+> NB: > NB: i nomi composti vanno separati da trattino. Non usare camel case. Questo NON vale per i nomi delle variabili o degli oggetti all\'interno del codice.
 
 Passaggi:
 - Tipologia di fogli stile da utilizzare: CSS
@@ -42,4 +51,67 @@ Per seguire comandi angular su un determinato progetto, è necessario entrare ne
 - package.json (package-lock.json): contiene l'elenco delle librerie necessarie al funzionamento di angular
 - tsconfig...: contengono parametri di configurazione del linguaggio Typescript, raramente vengono modificati.
 
+## Componenti
 
+I componenti sono il cuore di un'applicazione Angular. Ogni applicazione Angular è essenzialmente una gerarchia di componenti che si combinano per formare l'interfaccia utente e gestire la logica dell'applicazione.
+
+Per creare un nuovo componente è preferibile usare il comando *ng* della CLI.
+```bash
+ng generate component nome-componente
+```
+
+Questo comando genera:
+
+- Un file TypeScript (`nome-componente.component.ts`)
+- Un file HTML (`nome-componente.component.html`)
+- Un file CSS (`nome-componente.component.css`)
+- Un file di test (`nome-componente.component.spec.ts`)
+
+> NB: se il nome del componente è composto da più parole, scriverle tutte in minusco e separarle con un trattino.
+
+### Cos'è un Componente?
+
+Un componente in Angular è una classe TypeScript che interagisce con il template HTML per definire una parte dell'interfaccia utente. Ogni componente comprende:
+
+- **Una classe TypeScript** che contiene la logica e i dati.
+- **Un template HTML** che definisce la vista.
+- **Un set di stili CSS** (opzionale) per il design del componente.
+- **Decoratori** che forniscono metadati ad Angular su come utilizzare il componente.
+
+### Struttura di un Componente
+
+Ecco un esempio base di un componente Angular:
+
+```typescript
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-mio-componente',
+  templateUrl: './mio-componente.component.html',
+  styleUrls: ['./mio-componente.component.css']
+})
+export class MioComponente {
+  titolo: string = 'Benvenuto nel mio componente!';
+
+  constructor() { }
+
+  saluta(): void {
+    console.log('Ciao dal componente!');
+  }
+}
+```
+
+- **@Component**: È un decoratore che indica ad Angular che la classe è un componente.
+- **selector**: È il nome del tag HTML utilizzato per inserire il componente in un template.
+- **templateUrl**: Specifica il file HTML associato al componente.
+- **styleUrls**: Specifica il file CSS per gli stili del componente.
+- **MioComponente**: È la classe del componente che contiene dati e metodi.
+
+### Utilizzo di un Componente
+
+Per utilizzare un componente all'interno di un altro, inserisci il suo **selector** nel template HTML del componente padre:
+
+```html
+<!-- Nel template del componente padre -->
+<app-mio-componente></app-mio-componente>
+```
