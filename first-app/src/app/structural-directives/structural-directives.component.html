@@ -1,0 +1,58 @@
+<h2>Direttive strutturali</h2>
+<p>Le direttive strutturali consentono di modificare la struttura 
+    della pagina, aggiungendo o eliminando TAG.
+</p>
+<h3>if</h3>
+<div>
+    <button (click)="cambiaVisualizza()">
+        Visualizza/nascondi nomeImmagine       
+    </button>
+</div>
+<div>
+
+    <!-- Una direttiva strutturale inizia sempre con @.
+    if: inserisce nel DOM (pagina HTML) il code HTML scritto 
+    fra le parentesi graffe se la condizione racchiusa fra parentesi 
+    tonde è vera.
+    -->
+    @if(visualizza) {
+        <img [src]="pathImmagine" style="width: 100px;">
+    }
+    <!-- Inserisce nel DOM il codice HTML scritto sotto se la condizione è
+     falsa. -->
+    @else {
+        <p>Nessuna immagine da visualizzare.</p>
+    }
+</div>
+<hr>
+<h3>For</h3>
+<div>
+  <!-- #etichetta ci sonsente di assegnare un nome ad un tag presente nella
+   pagina. Nei vari tipi di data binding, posso fare riferimento al
+   TAG usando l'etichetta senza # --> 
+  <input #nuovoColore type="text" placeholder="nome colore...">
+  <!-- Quando viene effetuato un lick sul bottone, viene eseguito il metodo
+   aggiungiColore (vedi file typescript ver la sua definizione).
+   Come parametro al metodo viene passato il valore (value) contenuto 
+   nella input (identificata dalla etichetta). -->
+  <button (click)="aggiungiColore(nuovoColore.value)">Aggiungi</button>
+  <button (click)="azzeraColori()">Azzera</button>
+</div>
+<div>
+    <ul>
+        <!-- Con la direttiva for il blocco <li> verrà inserito nel DOM
+            tante volte quanti sono gli elementi dell'array colori.
+            La variabile colore (non a scelta dello sviluppatore) verrà
+            inizializzata ad ogni passaggio con il valore corrente dell'array -->        
+        @for(colore of colori; track $index) {
+            <li>$index = {{$index}} {{colore}}, 
+                $count = {{$count}}, $first = {{$first}},
+                $last = {{$last}}, $odd = {{$odd}}, $even = {{$even}}
+            </li>
+        }
+        <!-- Il blocco definito da empty verrà inserito se l'array è vuoto. -->
+        @empty {
+            <li>Non sono presenti colori.</li>
+        }
+    </ul>
+</div>
