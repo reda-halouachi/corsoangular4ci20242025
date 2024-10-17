@@ -3,12 +3,13 @@ import { RouterOutlet } from '@angular/router';
 import { BindingsComponent } from './bindings/bindings.component';
 import { SliderComponent } from './slider/slider.component';
 import { StructuralDirectivesComponent } from './structural-directives/structural-directives.component';
+import { StudentiComponent } from './studenti/studenti.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, BindingsComponent, SliderComponent,
-    StructuralDirectivesComponent
+    StructuralDirectivesComponent, StudentiComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

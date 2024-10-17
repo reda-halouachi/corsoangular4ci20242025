@@ -1,1 +1,36 @@
-<p>studenti works!</p>
+<h1>Gestione studenti</h1>
+<hr>
+<div>
+    <input #id type="number" placeholder="id">
+    <input #nome type="text" placeholder="nome...">
+    <input #cognome type="text" placeholder="cognome...">
+    <input #classe type="text" placeholder="classe...">
+    <button (click)="aggiungi(id, nome, cognome, classe)">Aggiungi</button>
+</div>
+<hr>
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Cognome</th>
+                <th>Classe</th>
+                <th>Media Voti</th>
+                <th>Aggiungi voto</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for(studente of studenti; track studente.id) {
+                <tr>
+                    <th>{{studente.id}}</th>
+                    <td>{{studente.nome}}</td>
+                    <td>{{studente.cognome}}</td>
+                    <td>{{studente.classe}}</td>
+                    <td>{{studente.mediaVoti}}</td>
+                    <td><input type="number" #voto min="3" max="10"><button (click)="aggiungiVoto($index, voto)">Aggiungi</button></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
