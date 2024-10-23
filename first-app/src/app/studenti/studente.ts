@@ -27,6 +27,7 @@ export class Studente {
     set nome(nome: string) {
         this._nome = nome;
     }
+    
     get cognome(): string {
         return this._cognome;
     }

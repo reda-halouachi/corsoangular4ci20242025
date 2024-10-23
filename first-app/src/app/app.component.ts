@@ -4,12 +4,13 @@ import { BindingsComponent } from './bindings/bindings.component';
 import { SliderComponent } from './slider/slider.component';
 import { StructuralDirectivesComponent } from './structural-directives/structural-directives.component';
 import { StudentiComponent } from './studenti/studenti.component';
+import { SignalComponent } from './signal/signal.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, BindingsComponent, SliderComponent,
-    StructuralDirectivesComponent, StudentiComponent
+    StructuralDirectivesComponent, StudentiComponent, SignalComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

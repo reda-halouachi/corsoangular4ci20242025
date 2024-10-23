@@ -1,0 +1,13 @@
+<h2>Signals</h2>
+<!-- Attenzione: per ottenere il valore gestito dalla funzione wrapper signal devo eseguire
+ la funzione stessa: nomedelsignal() (ricordarsi per parentesi tonde!!!) -->
+<p>Questo è il il valore di numeroGestitoConSignal: {{numeroGestitoConSignal()}}</p>
+<p>Questo è il il valore di doppioCalcolato: {{doppioCalcolato()}}</p>
+<p>
+    <button (click)="incrementa()">incrementa</button>
+    <button (click)="azzera()">azzera</button>
+</p>
+<p>AltroSignal: {{altroSignal()}}</p>
+<p>
+    <button (click)="cambiaSaluto()">cambia saluto</button>
+</p>
