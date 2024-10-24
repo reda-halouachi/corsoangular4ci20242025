@@ -1,4 +1,4 @@
-import { Component, computed, Signal, signal, WritableSignal } from '@angular/core';
+import { Component, computed, effect, Signal, signal, WritableSignal } from '@angular/core';
 
 @Component({
   selector: 'app-signal',
@@ -34,7 +34,9 @@ export class SignalComponent {
     // Al metodo update viene passata la funzione di callback che spiega come modificare 
     // il valore gestito dal signal. vecchioValore viene inizializzato con il valore corrente
     // del signal prima della modifica.
-    this.numeroGestitoConSignal.update(vecchioValore => vecchioValore + 1);
+    this.numeroGestitoConSignal.update((valoreCorrente) => {
+      return valoreCorrente + 1;
+    });
   }
 
   azzera(): void {
@@ -49,4 +51,14 @@ export class SignalComponent {
 
   // I metodi set e update producono il ridisegno del solo componente nel quale si trova il signal
   // interessato dai metodi.
+
+  constructor() {
+    effect(() => {
+      console.log('numeroGestitoConSignal è stato modificato, nuovo valore: ', this.numeroGestitoConSignal());
+    });
+
+    effect(() => {
+      console.log('altroSignal è stato modificato, nuovo valore: ', this.altroSignal());
+    });
+  }
 }
