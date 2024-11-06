@@ -1,1 +1,26 @@
-<p>songs-table works!</p>
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>title</th>
+                <th>artist</th>              
+                <th>duration</th>
+                <th>genre</th>
+                <th>rating</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for(song of parentSongs(); track song.id) {
+                <tr>
+                    <th>{{song.id}}</th>
+                    <td>{{song.title}}</td>
+                    <td>{{song.artist}}</td>
+                    <td>{{song.duration}}</td>
+                    <td>{{song.genre}}</td>
+                    <td>{{song.rating}}</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

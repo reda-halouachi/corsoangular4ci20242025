@@ -1,0 +1,12 @@
+div {
+    width:75%;
+    margin: auto;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+input, button {
+    margin: 5px;
+    padding: 5px;
+}
+

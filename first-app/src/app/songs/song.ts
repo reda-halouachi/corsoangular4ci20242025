@@ -1,5 +1,5 @@
 export class Song {
-    private _id: number;
+    private _id: number = 0;
     private _title: string = '';
     private _artist: string = '';
     private _duration: number = 0;

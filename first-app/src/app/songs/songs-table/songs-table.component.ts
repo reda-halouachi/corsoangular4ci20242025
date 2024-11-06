@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, input, InputSignal } from '@angular/core';
+import { Song } from '../song';
 
 @Component({
   selector: 'app-songs-table',
@@ -8,5 +9,5 @@ import { Component } from '@angular/core';
   styleUrl: './songs-table.component.css'
 })
 export class SongsTableComponent {
-
+  parentSongs: InputSignal<Song[]> = input.required<Song[]>()
 }

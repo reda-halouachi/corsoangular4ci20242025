@@ -1,0 +1,19 @@
+div {
+    margin: auto;
+    margin-top: 3rem;
+}
+
+table {
+    border-collapse: collapse;
+    width: 75%;
+    margin: auto;
+}
+
+th, td {
+    padding: 5px;
+    border: 1px solid gray;
+}
+
+th {
+    background-color: azure;
+}

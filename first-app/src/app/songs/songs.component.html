@@ -1,1 +1,6 @@
-<p>songs works!</p>
+<h2>Songs playlist</h2>
+<hr>
+<!-- Ricordarsi che two way binding chiede la doppia parentesi: [(...)] -->
+<app-insert-song [(parentSongs)]="songs"></app-insert-song>
+<hr>
+<app-songs-table [parentSongs]="songs()"></app-songs-table>
