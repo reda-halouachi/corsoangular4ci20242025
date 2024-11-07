@@ -6,10 +6,21 @@ import { Libro } from './libro';
 })
 export class BibliotecaService {
 
+  // Si imposta l'accessibilità al writablesignal che gestisce l'array di Libri per evitare che i componenti
+  // che usano il servizio possano modificarlo o usare i metodi set o update in modo non controllato.
   private _elencoLibri: WritableSignal<Libro[]> = signal<Libro[]>([]);
+  // Per fare in modo che i componenti che vogliono utilizzare l'elenco dei libri possano avere accesso ai dati
+  // si aggiunge un altro signal con accessibilità public di tipo Read-only (Signal) a cui si assegna il valore
+  // restituito dal metodo asReadOnly (della class WritableSignal). 
+  // Se il writablesignal viene modificato la notifica viene emessa anche dal Read-only signal. 
   elencoLibri: Signal<Libro[]> = this._elencoLibri.asReadonly();
 
+  // Aggiunge un nuovo libro alla biblioteca
   aggiungiLibro(nuovoLibro: Libro):void {
+    // Il metodo update accetta come metodo una funzione anonima (espressione lambda) che modifica il valore gestito dal signal.
+    // la variabile situazioneCorrente (parametro della funzione anonima di modifica) ha come valore l'array prima dell'aggiunta del nuovo libro.
+    // [...situazione corrente crea un NUOVO array con i precedenti valori; , nuovoLibro] aggiunge il nuovo libro al nuovo array.
+    // In questo modo il signal può avvisare il componente che il valore gestito è cambiato.
     this._elencoLibri.update(situazioneCorrente => [...situazioneCorrente, nuovoLibro]);
   }
 
