@@ -54,8 +54,18 @@ export class Libro {
     get nrcopie(): number {
         return this._nrcopie;
     }
-    set nrcopie(nrcopie: number) {
-        // Preferibile controllare il codice prima di assegnarlo
-        this._nrcopie = nrcopie;
+
+    prestito(): boolean {
+        if (this._nrcopie > 0) {
+            this._nrcopie--;
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    restituzione(): void {
+        this._nrcopie++;
     }
 }
