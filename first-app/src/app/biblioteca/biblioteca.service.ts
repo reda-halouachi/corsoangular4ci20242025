@@ -65,26 +65,19 @@ export class BibliotecaService {
     try {
       // Il metodo prestito della classe Libro restituisce un boolean con l'esito dell'operazione
       // ricordo: se il numero di copie è uguale a 0 non si puòl prestare
-      // Prima di provare a eseguire il prestito imposto a false l'esito
-      let prestitoRiuscito: boolean = false;
+      // Prima di provare a eseguire il prestito imposto a false l'esito     
       this._elencoLibri.update(situazioneCorrente => {
-        // se il prestito riesce, modifico il valore di esitoPrestito
-        prestitoRiuscito = situazioneCorrente[indice].prestito();
-        // Se il prestito è riuscito
-        if (prestitoRiuscito) {
-          // Restituisco un unovo arraycon il numero di copie del libro aggiornato
-          return [...situazioneCorrente];
-        }
-        else {
-          // Se il prestito non è riuscito non modifico nulla, restituisco la situazioneCorrente
-          return situazioneCorrente;
-        }
+      // se il prestito riesce, modifico il valore di esitoPrestito       
+      situazioneCorrente[indice].prestito();
+      // Se vengono eseguite le istruzioni successiva è tutto OK
+      // Restituisco un unovo arraycon il numero di copie del libro aggiornato
+      return [...situazioneCorrente];
       })
       // Il metodo finisce restituendo l'esito del prestito
-      return prestitoRiuscito;
+      return true;
     }
     catch {
-      // Uffa, qualcosa è andato storto... restituisco false
+      // Uffa, qualcosa è andato storto... restituisco false     
       return false;
     }
   }

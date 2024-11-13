@@ -1,1 +1,10 @@
-<p>insert-libro works!</p>
+<h2></h2>
+<div>
+    <p><input #isbn type="text" placeholder="isbn..."></p>
+    <p><input #titolo type="text" placeholder="titolo..."></p>
+    <p><input #autore type="text" placeholder="autore..."></p>
+    <p><input #genere type="text" placeholder="genere..."></p>
+    <p><input #anno type="number" placeholder="anno..."></p>
+    <p><input #nrcopie type="number" placeholder="numero di copie..." min="0"></p>
+    <p><button (click)="aggiungiLibro(isbn.value, titolo.value, autore.value, genere.value, anno.value, nrcopie.value)">Aggiungi</button></p>
+</div>

@@ -55,13 +55,12 @@ export class Libro {
         return this._nrcopie;
     }
 
-    prestito(): boolean {
+    prestito(): void {
         if (this._nrcopie > 0) {
-            this._nrcopie--;
-            return true;
+            this._nrcopie--;           
         }
         else {
-            return false;
+            throw new Error('Non sono presenti copie di questo libro.');
         }
     }
 
