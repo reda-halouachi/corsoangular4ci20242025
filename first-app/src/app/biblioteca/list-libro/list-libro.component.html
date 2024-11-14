@@ -1,1 +1,55 @@
-<p>list-libro works!</p>
+<h2>Elenco libri inseriti</h2>
+<hr>
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>Isbn</th>
+                <th>Titolo</th>
+                <th>Autore</th>
+                <th>Genere</th>
+                <th>Anno</th>
+                <th>Numero di copie</th>
+                <th> </th>
+            </tr>
+        </thead>
+        <tbody>
+            @for(libro of elencoLibri(); track libro.isbn) {
+                @if(indiceModifica() == $index) {
+                    <!-- Il libro deve essere in modalità modifica -->
+                    <tr>
+                        <th><input #isbn type="text" [value]="libro.isbn"></th>
+                        <td><input #isbn type="text" [value]="libro.titolo"></td>
+                        <td><input #isbn type="text" [value]="libro.autore"></td>
+                        <td><input #isbn type="text" [value]="libro.genere"></td>
+                        <td><input #isbn type="number" [value]="libro.anno"></td>
+                        <td><input #isbn type="number" [value]="libro.nrcopie"></td>
+                        <td>
+                            <button>Salva</button>
+                            <button (click)="annulla()">Annulla</button>
+                        </td>
+                    </tr>
+                }
+                @else {
+                    <tr>
+                        <th>{{libro.isbn}}</th>
+                        <td>{{libro.titolo}}</td>
+                        <td>{{libro.autore}}</td>
+                        <td>{{libro.genere}}</td>
+                        <td>{{libro.anno}}</td>
+                        <td>{{libro.nrcopie}}</td>
+                        <td>
+                            <button (click)="prestito($index)" [disabled]="libro.nrcopie == 0">Prestito</button>
+                            <button (click)="restituzione($index)">Restituzione</button>
+                            <button (click)="elimina($index)">Elimina</button>
+                            <button (click)="modifica($index)">Modifica</button>
+                        </td>
+                    </tr>
+                }
+            }
+            @empty {
+                <tr><td colspan="7">Non sono presenti libri in biblioteca.</td></tr>
+            }
+        </tbody>
+    </table>
+</div>

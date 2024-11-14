@@ -1,4 +1,4 @@
-import { Component, effect, inject, Signal } from '@angular/core';
+import { Component, effect, inject, signal, Signal, WritableSignal } from '@angular/core';
 import { BibliotecaService } from '../biblioteca.service';
 import { Libro } from '../libro';
 
@@ -12,15 +12,37 @@ import { Libro } from '../libro';
 export class ListLibroComponent {
 
   // Dependency injection
-  private bs: BibliotecaService = inject(BibliotecaService);
+  private bibliotecaService: BibliotecaService = inject(BibliotecaService);
   
   // L'attributo el prende come valore il Signal del mio servizio BibliotecaService
-  el: Signal<Libro[]> = this.bs.elencoLibri;
+  elencoLibri: Signal<Libro[]> = this.bibliotecaService.elencoLibri;
+
+  indiceModifica: WritableSignal<number> = signal(-1);
 
   constructor() {
     effect(() => {
-      console.log(this.el());
+      console.log(this.elencoLibri());
     })
+  }
+
+  prestito(indice: number): void {
+    this.bibliotecaService.prestaLibro(indice);
+  }
+
+  restituzione(indice: number): void {
+    this.bibliotecaService.restituisciLibro(indice);
+  }
+
+  elimina(indice: number): void {
+    this.bibliotecaService.eliminaLibro2(indice);
+  }
+
+  modifica(indice: number): void {
+    this.indiceModifica.set(indice);
+  }
+
+  annulla(): void {
+    this.indiceModifica.set(-1);
   }
 
 }

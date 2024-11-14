@@ -1,4 +1,4 @@
-import { Injectable, Signal, signal, WritableSignal } from '@angular/core';
+import { Injectable, Signal, signal, WritableSignal, ɵsetCurrentInjector } from '@angular/core';
 import { Libro } from './libro';
 
 @Injectable({
@@ -16,7 +16,7 @@ export class BibliotecaService {
   elencoLibri: Signal<Libro[]> = this._elencoLibri.asReadonly();
 
   // Aggiunge un nuovo libro alla biblioteca
-  aggiungiLibro(nuovoLibro: Libro):void {
+  aggiungiLibro(nuovoLibro: Libro): void {
     // Il metodo update accetta come metodo una funzione anonima (espressione lambda) che modifica il valore gestito dal signal.
     // la variabile situazioneCorrente (parametro della funzione anonima di modifica) ha come valore l'array prima dell'aggiunta del nuovo libro.
     // [...situazione corrente crea un NUOVO array con i precedenti valori; , nuovoLibro] aggiunge il nuovo libro al nuovo array.
@@ -67,11 +67,11 @@ export class BibliotecaService {
       // ricordo: se il numero di copie è uguale a 0 non si puòl prestare
       // Prima di provare a eseguire il prestito imposto a false l'esito     
       this._elencoLibri.update(situazioneCorrente => {
-      // se il prestito riesce, modifico il valore di esitoPrestito       
-      situazioneCorrente[indice].prestito();
-      // Se vengono eseguite le istruzioni successiva è tutto OK
-      // Restituisco un unovo arraycon il numero di copie del libro aggiornato
-      return [...situazioneCorrente];
+        // se il prestito riesce, modifico il valore di esitoPrestito       
+        situazioneCorrente[indice].prestito();
+        // Se vengono eseguite le istruzioni successiva è tutto OK
+        // Restituisco un unovo arraycon il numero di copie del libro aggiornato
+        return [...situazioneCorrente];
       })
       // Il metodo finisce restituendo l'esito del prestito
       return true;
@@ -82,7 +82,18 @@ export class BibliotecaService {
     }
   }
 
-  constructor() { }
+  restituisciLibro(indice: number) {
+    this._elencoLibri.update(current => {
+      try {
+        current[indice].restituzione();
+        return [...current];
+      }
+      catch {
+        return current;
+      }
+    })
+  }
 
+  constructor() { }
 
 }

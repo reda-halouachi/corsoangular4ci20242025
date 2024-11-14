@@ -1,0 +1,20 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+div {
+    margin-top: 3rem;
+}
+table {
+    border-collapse: collapse;
+    width: 75%;    
+    margin: auto;
+}
+
+td, th {
+    border: 1px solid gray;
+    padding: 5px;
+}
+
+h2 {
+    text-align: center;
+}
