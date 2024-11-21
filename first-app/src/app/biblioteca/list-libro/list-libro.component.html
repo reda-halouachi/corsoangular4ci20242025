@@ -1,6 +1,11 @@
 <h2>Elenco libri inseriti</h2>
 <hr>
 <div>
+<button (click)="salvaBiblioteca()">Salva biblioteca</button>
+<button (click)="caricaBiblioteca()">Carica biblioteca</button>
+</div>
+<hr>
+<div>
     <table>
         <thead>
             <tr>
@@ -19,13 +24,14 @@
                     <!-- Il libro deve essere in modalità modifica -->
                     <tr>
                         <th><input #isbn type="text" [value]="libro.isbn"></th>
-                        <td><input #isbn type="text" [value]="libro.titolo"></td>
-                        <td><input #isbn type="text" [value]="libro.autore"></td>
-                        <td><input #isbn type="text" [value]="libro.genere"></td>
-                        <td><input #isbn type="number" [value]="libro.anno"></td>
-                        <td><input #isbn type="number" [value]="libro.nrcopie"></td>
+                        <td><input #titolo type="text" [value]="libro.titolo"></td>
+                        <td><input #autore type="text" [value]="libro.autore"></td>
+                        <td><input #genere type="text" [value]="libro.genere"></td>
+                        <td><input #anno type="number" [value]="libro.anno"></td>
+                        <td><input #nrcopie type="number" [value]="libro.nrcopie"></td>
                         <td>
-                            <button>Salva</button>
+                            <button (click)="salva(isbn.value, titolo.value, autore.value, genere.value,
+                            anno.value, nrcopie.value)">Salva</button>
                             <button (click)="annulla()">Annulla</button>
                         </td>
                     </tr>

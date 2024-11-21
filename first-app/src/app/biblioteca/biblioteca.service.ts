@@ -94,6 +94,39 @@ export class BibliotecaService {
     })
   }
 
+  modificaLibro(indice: number, libro: Libro) {
+    this._elencoLibri.update(current => {
+      try {        
+          current[indice] = libro;        
+          return [...current];
+      }
+      catch {
+        return current;
+      }
+    })
+  }
+
+  salvaLibri(): void {
+    localStorage.setItem("biblioteca", JSON.stringify(this._elencoLibri()));
+  }
+
+  caricaLibri(): void {
+    let tmp: string | null = localStorage.getItem("biblioteca");
+    if (tmp) {
+      // Svuoto la biblioteca
+      this._elencoLibri.set([]);
+      // Il metodo parse non può sapere che i dati presenti nel local storage sono istanze 
+      // della classe libro. Quindi libriCaricati sarà un array di oggetti javascript
+      let libriCaricati = JSON.parse(tmp);
+
+      libriCaricati.forEach((libroCaricato: any) => {
+        let libro = new Libro(libroCaricato._isbn, libroCaricato._titolo, libroCaricato._autore,
+          libroCaricato._genere, libroCaricato._anno, libroCaricato._nrcopie);
+        this.aggiungiLibro(libro);
+      });      
+    }
+  }
+
   constructor() { }
 
 }

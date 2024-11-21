@@ -13,13 +13,13 @@ export class ListLibroComponent {
 
   // Dependency injection
   private bibliotecaService: BibliotecaService = inject(BibliotecaService);
-  
+    
   // L'attributo el prende come valore il Signal del mio servizio BibliotecaService
   elencoLibri: Signal<Libro[]> = this.bibliotecaService.elencoLibri;
 
   indiceModifica: WritableSignal<number> = signal(-1);
 
-  constructor() {
+  constructor(private bs: BibliotecaService) {
     effect(() => {
       console.log(this.elencoLibri());
     })
@@ -45,4 +45,18 @@ export class ListLibroComponent {
     this.indiceModifica.set(-1);
   }
 
+  salva(isbn: string, titolo:string, autore: string, genere: string, anno: string, nrcopie: string): void {
+    // Creo un nuovo libro con i nuovi valori
+    let libro = new Libro(isbn, titolo, autore, genere, parseInt(anno), parseInt(nrcopie));
+    this.bibliotecaService.modificaLibro(this.indiceModifica(), libro);
+    this.annulla();
+  }
+
+  salvaBiblioteca(): void {
+    this.bibliotecaService.salvaLibri();
+  }
+
+  caricaBiblioteca(): void {    
+    this.bibliotecaService.caricaLibri();
+  }
 }
