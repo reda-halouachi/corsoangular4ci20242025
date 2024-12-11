@@ -1,12 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { SpotifyService } from '../spotify.service';
 
 @Component({
   selector: 'app-search',
   standalone: true,
-  imports: [],
+  imports: [ReactiveFormsModule],
   templateUrl: './search.component.html',
   styleUrl: './search.component.css'
 })
-export class SearchComponent {
+export class SearchComponent implements OnInit {
+ // Inject di Spotify service
+ private spotifyService: SpotifyService = inject(SpotifyService);
 
+ // Definire una proprietà di tipo From control che mi ocnsente di gestire la input in modo avanzato
+ artistName: FormControl = new FormControl();
+
+ ngOnInit(): void {
+  this.artistName.valueChanges.subscribe(nome => {
+    console.log(nome);
+  })
+}
+ 
 }
