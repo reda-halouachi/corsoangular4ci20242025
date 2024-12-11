@@ -1,7 +1,8 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { inject, Injectable, Signal, signal, WritableSignal } from '@angular/core';
 import { IToken } from './i-token';
-import { interval } from 'rxjs';
+import { interval, Observable } from 'rxjs';
+import { ISearch } from './i-search';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,7 @@ export class SpotifyService {
   private clientSecret: string = '4f3e9a298b084c35846c5ddf5fc3927e';
 
   private tokenURL: string = 'https://accounts.spotify.com/api/token';
+  private searchURL: string = 'https://api.spotify.com/v1/search?q=';
 
   private token!: IToken;
   private _tokenOK: WritableSignal<boolean> = signal(false);
@@ -41,7 +43,7 @@ export class SpotifyService {
       // caso quando Spotify ci manda l'access token
       this.token = dati;
       this._tokenOK.set(true);
-      interval(this.token.expires_in).subscribe(() => {
+      interval(this.token.expires_in * 1000).subscribe(() => {
         this._tokenOK.set(false);
         this.httpClient.post<IToken>(this.tokenURL, body.toString(), {headers: header})
         .subscribe((dati: IToken) => {
@@ -50,5 +52,12 @@ export class SpotifyService {
         })
       })
     })    
+  }
+
+  searchArtist(name: string): Observable<ISearch> {
+    const headers: HttpHeaders = new HttpHeaders()
+    .set('Authorization', `Bearer ${this.token.access_token}`);
+
+    return this.httpClient.get<ISearch>(`${this.searchURL}${name}&type=artist`, {headers: headers});
   }
 }

@@ -2,3 +2,7 @@ POST https://accounts.spotify.com/api/token
 Content-Type: application/x-www-form-urlencoded
 
 grant_type=client_credentials&client_id=8b39e56d4dad491aaa626b87f7260358&client_secret=4f3e9a298b084c35846c5ddf5fc3927e
+
+###
+GET https://api.spotify.com/v1/search?q=anna&type=artist
+Authorization: Bearer BQAP2hvge0K9M5cZDsX1312GIlO_FiIpiJGUMUTyi2FVYcsnTiK2qXMGOMMSShA2jje6Eqyx1vwiOSeUE5ipwg97G7VVXXRQl-qsfBOOlpQTEV37BpM
