@@ -11,6 +11,6 @@ export const routes: Routes = [
     {path: 'search', component: SearchComponent},
     {path: 'credits', component: CreditsComponent},
     {path: 'login', component: LoginComponent},
-    {path: 'albums', component: AlbumsComponent},
+    {path: 'albums/:id', component: AlbumsComponent},
     {path: '**', component: NotFoundComponent}
 ];
