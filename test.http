@@ -4,5 +4,5 @@ Content-Type: application/x-www-form-urlencoded
 grant_type=client_credentials&client_id=8b39e56d4dad491aaa626b87f7260358&client_secret=4f3e9a298b084c35846c5ddf5fc3927e
 
 ###
-GET https://api.spotify.com/v1/search?q=anna&type=artist
-Authorization: Bearer BQAP2hvge0K9M5cZDsX1312GIlO_FiIpiJGUMUTyi2FVYcsnTiK2qXMGOMMSShA2jje6Eqyx1vwiOSeUE5ipwg97G7VVXXRQl-qsfBOOlpQTEV37BpM
+GET https://api.spotify.com/v1/search?q=&type=artist
+Authorization: Bearer BQBu0k_q6DwHAvP4sRnDbiv8mcw9aRvZkIOW0hPVxPI4c7ialoC26qukcawqoKI9uyslAT8jtRuDUOiKzKegEvleBX2YFs9oU8CMijjeFLZKHGwGFjI
