@@ -5,3 +5,9 @@
     background-size: cover;
     min-height: 750px;
 }
+
+@media(min-width: 992) {
+    #sfondo {
+        min-height: 60vh;
+    }
+}

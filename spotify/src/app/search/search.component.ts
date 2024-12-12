@@ -1,12 +1,14 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal, WritableSignal } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, of, switchMap } from 'rxjs';
 import { SpotifyService } from '../spotify.service';
+import { ISearch } from '../i-search';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-search',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './search.component.html',
   styleUrl: './search.component.css'
 })
@@ -17,7 +19,8 @@ export class SearchComponent implements OnInit {
   // Definire una proprietà di tipo Form control che mi consente di gestire la input in modo avanzato
   artistName: FormControl = new FormControl();
 
-  // Signal 
+  // Signal che gestisce l'elenco degli artisti ricevuto da Spotify
+  artistsList: WritableSignal<ISearch | null> = signal<ISearch | null>(null);
 
   ngOnInit(): void {
     // valueChanges restituisce un Observable, la funzione passata con subscribe viene eseguita 
@@ -53,6 +56,7 @@ export class SearchComponent implements OnInit {
     )
     .subscribe(dati => {
       console.log(dati);
+      this.artistsList.set(dati);
     })
   }
 
