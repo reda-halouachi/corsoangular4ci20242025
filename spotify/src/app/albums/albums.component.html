@@ -1,1 +1,14 @@
-<p>albums works!</p>
+<div class="container">
+    <div class="row my-5">
+        @for(album of elencoAlbum()?.items; track $index) {
+            <div class="col-xl-3 col-sm-6">
+                <app-album-card [album]="album"></app-album-card>
+            </div>
+        }
+        @empty {
+            <div class="alert alert-light" role="alert">
+                Nessun album presente...
+            </div>
+        }
+    </div>
+</div>

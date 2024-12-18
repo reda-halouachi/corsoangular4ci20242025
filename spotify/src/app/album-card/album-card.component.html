@@ -1,1 +1,13 @@
-<p>album-card works!</p>
+<div class="card mt-4">
+    @if(album().images.length > 0) {
+    <img [src]="album().images[0].url" class="card-img-top" [alt]="album().name">
+    }
+    <div class="card-body">
+        <h5 class="card-title">{{album().name}}</h5>
+        <p class="card-text">
+            Numero di tracce: {{album().total_tracks}}<br>
+            Anno: {{album().release_date.substring(0, 4)}}
+        </p>
+        <a href="#" class="btn btn-primary">Tracce</a>
+    </div>
+</div>

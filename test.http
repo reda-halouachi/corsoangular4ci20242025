@@ -6,3 +6,7 @@ grant_type=client_credentials&client_id=8b39e56d4dad491aaa626b87f7260358&client_
 ###
 GET https://api.spotify.com/v1/search?q=&type=artist
 Authorization: Bearer BQBu0k_q6DwHAvP4sRnDbiv8mcw9aRvZkIOW0hPVxPI4c7ialoC26qukcawqoKI9uyslAT8jtRuDUOiKzKegEvleBX2YFs9oU8CMijjeFLZKHGwGFjI
+
+###
+GET https://api.spotify.com/v1/artists/5l4nhyz8876RhgE2d18h65/albums
+Authorization: Bearer BQC3jTVppnXUDqHGhM7Z_shCJt1DnNMt94b3GNr1zVSNX_qEtC0FEPeoD_Gxz7vm6ngafQl6pUCiIScO0TMyd30ic7tzBFlxek28BwlN4S8-YHdx6jQ

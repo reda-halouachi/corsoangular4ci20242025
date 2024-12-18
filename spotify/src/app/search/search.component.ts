@@ -54,8 +54,7 @@ export class SearchComponent implements OnInit {
         }
       }) 
     )
-    .subscribe(dati => {
-      console.log(dati);
+    .subscribe(dati => {     
       this.artistsList.set(dati);
     })
   }

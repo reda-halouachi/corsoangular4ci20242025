@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, input, InputSignal } from '@angular/core';
+import { Item } from '../i-albums';
 
 @Component({
   selector: 'app-album-card',
@@ -8,5 +9,5 @@ import { Component } from '@angular/core';
   styleUrl: './album-card.component.css'
 })
 export class AlbumCardComponent {
-
+  album: InputSignal<Item> = input.required();
 }
