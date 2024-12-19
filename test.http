@@ -10,3 +10,7 @@ Authorization: Bearer BQBu0k_q6DwHAvP4sRnDbiv8mcw9aRvZkIOW0hPVxPI4c7ialoC26qukca
 ###
 GET https://api.spotify.com/v1/artists/5l4nhyz8876RhgE2d18h65/albums
 Authorization: Bearer BQC3jTVppnXUDqHGhM7Z_shCJt1DnNMt94b3GNr1zVSNX_qEtC0FEPeoD_Gxz7vm6ngafQl6pUCiIScO0TMyd30ic7tzBFlxek28BwlN4S8-YHdx6jQ
+
+###
+GET https://api.spotify.com/v1/albums/4aawyAB9vmqN3uQ7FjRGTy
+Authorization: Bearer BQDz8gGhcMbYxhISA7tVhev_fx75b1Aj32S9cNMvkjjQyObGPIJq2yAVAt9gHjIYor90upZ2H9XeT9aBJFz2zSs-lw4leYwCKL5uopA35-qnxgQnygM
