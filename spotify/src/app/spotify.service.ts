@@ -4,6 +4,7 @@ import { IToken } from './i-token';
 import { interval, Observable } from 'rxjs';
 import { ISearch } from './i-search';
 import { IAlbums } from './i-albums';
+import { ITracks } from './i-tracks';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,7 @@ export class SpotifyService {
   private tokenURL: string = 'https://accounts.spotify.com/api/token';
   private searchURL: string = 'https://api.spotify.com/v1/search?q=';
   private albumsURL: string = 'https://api.spotify.com/v1/artists/';
+  private trackURL: string = 'https://api.spotify.com/v1/albums/'
 
   private token!: IToken;
   private _tokenOK: WritableSignal<boolean> = signal(false);
@@ -64,10 +66,17 @@ export class SpotifyService {
   }
 
   getAlbums(id: string): Observable<IAlbums>{
-    console.log(`${this.token.token_type} ${this.token.access_token}`);
     const headers: HttpHeaders = new HttpHeaders()
     .set('Authorization', `${this.token.token_type} ${this.token.access_token}`);
 
     return this.httpClient.get<IAlbums>(`${this.albumsURL}${id}/albums`, {headers: headers});
   }
+
+  getTracks(id: string): Observable<ITracks>{
+    const headers: HttpHeaders = new HttpHeaders()
+    .set('Authorization', `${this.token.token_type} ${this.token.access_token}`);
+
+    return this.httpClient.get<ITracks>(`${this.trackURL}${id}/tracks`, {headers: headers});
+  }
+
 }
