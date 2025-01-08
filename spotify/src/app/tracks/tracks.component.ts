@@ -27,6 +27,7 @@ export class TracksComponent {
       let id: string = parametriNellaURL['id'];
       this.spotifyService.getTracks(id).subscribe(dati => {
         this.elencoTracce.set(dati);
+        console.log(dati);
       })
     })
   }

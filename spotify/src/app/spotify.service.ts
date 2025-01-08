@@ -76,6 +76,6 @@ export class SpotifyService {
     const headers: HttpHeaders = new HttpHeaders()
     .set('Authorization', `${this.token.token_type} ${this.token.access_token}`);
 
-    return this.httpClient.get<ITracks>(`${this.albumsURL}${id}`, {headers: headers});    
+    return this.httpClient.get<ITracks>(`${this.trackURL}${id}`, {headers: headers});    
   }
 }
