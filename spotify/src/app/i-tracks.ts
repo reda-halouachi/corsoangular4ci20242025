@@ -70,6 +70,12 @@ export interface Item {
   is_local: boolean
 }
 
+export interface ICover {
+  name: string,
+  artists: Artist[],
+  images: Image[]
+}
+
 export interface Artist2 {
   external_urls: ExternalUrls3
   href: string

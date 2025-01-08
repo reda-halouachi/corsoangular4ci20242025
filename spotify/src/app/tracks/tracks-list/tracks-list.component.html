@@ -1,1 +1,22 @@
-<p>tracks-list works!</p>
+<div class="container">
+    @if(tracks()) {
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">Duration</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for(item of tracks()?.items; track $index) {
+                <tr>
+                    <th scope="row">{{$index + 1}}</th>
+                    <td>{{item.name}}</td>
+                    <td>{{item.duration_ms}}</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    }
+</div>

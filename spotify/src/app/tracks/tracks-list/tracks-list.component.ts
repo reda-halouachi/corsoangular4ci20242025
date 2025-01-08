@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, input, InputSignal } from '@angular/core';
+import { Tracks } from '../../i-tracks';
 
 @Component({
   selector: 'app-tracks-list',
@@ -8,5 +9,5 @@ import { Component } from '@angular/core';
   styleUrl: './tracks-list.component.css'
 })
 export class TracksListComponent {
-
+  tracks: InputSignal<Tracks | undefined> = input.required<Tracks | undefined>();
 }
