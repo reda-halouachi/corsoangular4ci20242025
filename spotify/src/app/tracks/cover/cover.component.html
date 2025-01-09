@@ -1,1 +1,7 @@
-<p>{{coverInfo()?.name}}</p>
+<div class="container">
+    @if(coverInfo()?.images) {
+        <img [src]="coverInfo()?.images?.[0]?.url"  class="img-fluid">
+    }
+    <h4 class="mt-2">{{coverInfo()?.name}}</h4>
+    <h3 class="mt-2 display-6">{{coverInfo()?.artists?.[0]?.name}}</h3>
+</div>
